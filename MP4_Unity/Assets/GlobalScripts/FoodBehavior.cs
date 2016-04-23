@@ -11,7 +11,7 @@ public class FoodBehavior : MonoBehaviour {
 	FoodState current_state = FoodState.NormalState;
 
 	void Start () {
-		
+		NewPosition ();
 	}
 
 	// Update is called once per frame
@@ -39,19 +39,16 @@ public class FoodBehavior : MonoBehaviour {
 
 
 	private void NewPosition() {
-//		GlobalGameBehavior globalBehavior = GameObject.Find ("GameManager").GetComponent<GlobalBehavior>();
-//		Vector2 worldMin = globalBehavior.WorldMin;
-//		Vector2 worldMax = globalBehavior.WorldMax;
-//		float x_pos = Random.Range (worldMin.x, worldMax.x);
-//		float y_pos = Random.Range (worldMin.y, worldMax.y);
-		//		transform.position = new Vector3 (x_pos, y_pos, 0f);
-
+		Vector2 worldMin = FirstGameManager.TheGameState.WorldMin;
+		Vector2 worldMax = FirstGameManager.TheGameState.WorldMax;
+		float x_pos = Random.Range (worldMin.x, worldMax.x);
+		float y_pos = Random.Range (worldMin.y, worldMax.y);
+		transform.position = new Vector3 (x_pos, y_pos, 0f);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		// Only care if hitting an Egg (vs. hitting another Enemy!
-		if (other.gameObject.name == "Hero") {
+		if (other.gameObject.name == "Level1Hero") {
             //GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
             Destroy(this.gameObject);
         }
