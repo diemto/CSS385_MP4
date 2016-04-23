@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FoodBehavior : MonoBehaviour {
 
@@ -8,10 +9,38 @@ public class FoodBehavior : MonoBehaviour {
 		BadState
 	};
 
+	enum FoodImage {
+		CupCake,
+		CupCakeBad,
+		IceCream,
+		IceCreamBad,
+		ShavedIce,
+		ShavedIceBad
+	};
+
+	FoodImage current_img;
+
+	Dictionary<FoodImage, string> img_table;
+
 	FoodState current_state = FoodState.NormalState;
 
 	void Start () {
 		NewPosition ();
+		img_table = new Dictionary<FoodImage, string> ();
+		img_table.Add (FoodImage.CupCake, "SharedTextures/cupcake");
+		img_table.Add (FoodImage.CupCakeBad, "SharedTextures/cupcake_bad");
+		img_table.Add (FoodImage.IceCream, "SharedTextures/iceCream");
+		img_table.Add (FoodImage.IceCreamBad, "SharedTextures/iceCream_bad");
+		img_table.Add (FoodImage.ShavedIce, "SharedTextures/shavedIce");
+		img_table.Add (FoodImage.ShavedIceBad, "SharedTextures/shavedIce_bad");
+		current_img = (FoodImage)(Random.Range (0, 3) * 2);
+		Debug.Log (img_table [current_img]);
+
+		SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
+		if (null != renderer) {
+			Sprite s = Resources.Load (img_table[current_img], typeof(Sprite)) as Sprite;
+			renderer.sprite = s;
+		}
 	}
 
 	// Update is called once per frame
