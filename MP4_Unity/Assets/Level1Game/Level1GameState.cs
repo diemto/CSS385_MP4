@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 
 
 public class Level1GameState : MonoBehaviour {
-	
+
 	// Use this for initialization
 	void Start () {
         Debug.Log("Level1: Wakes up!!");
+		FirstGameManager.TheGameState.CreateNewFoodItem ();
+		FirstGameManager.TheGameState.CreateNewFoodItem ();
 	}
 	
 	// Update is called once per frame

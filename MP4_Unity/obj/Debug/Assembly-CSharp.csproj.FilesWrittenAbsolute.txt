@@ -1,0 +1,17 @@
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/obj/Debug/Assembly-CSharp.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/UnityEngine.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/UnityEditor.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Mono.Cecil.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Unity.DataContract.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/MetaBlue/Desktop/CSS385_MP4/MP4_Unity/Temp/bin/Debug/Mono.Cecil.Mdb.dll
