@@ -14,7 +14,7 @@ public class LoadSceneSupport : MonoBehaviour {
 	void Start () {
         // Workflow assume:
         //      mLevelOneButton: is dragged/placed from UI
-        mLevelTwoButton = GameObject.Find("Level2Button").GetComponent<Button>();
+        mLevelTwoButton = GameObject.Find("Start").GetComponent<Button>();
 
         // add in listener
         mLevelOneButton.onClick.AddListener(
