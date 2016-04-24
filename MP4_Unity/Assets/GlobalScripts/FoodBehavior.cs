@@ -106,7 +106,7 @@ public class FoodBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "Level1Hero") {
+		if (other.gameObject.name == "Hero") {
             //GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
 
             Destroy(this.gameObject);

@@ -48,12 +48,4 @@ public class Level2HeroControl : MonoBehaviour {
 				transform.position += new Vector3 (0.1f, 0f, 0f);
 		}
 	}
-
-    /*void OnMouseUp()
-    {
-        Debug.Log("Level 2: Lower Left clicked");
-        SceneManager.LoadScene("LevelOne");
-        FirstGameManager.TheGameState.SetCurrentLevel("LevelOne");
-    }*/
-	
 }
