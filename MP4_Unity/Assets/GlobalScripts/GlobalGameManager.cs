@@ -89,9 +89,9 @@ public class GlobalGameManager : MonoBehaviour {
 			else if ( (objBound.min.z < mWorldBound.min.z) || (objBound.max.z > mWorldBound.max.z))
 				status = WorldBoundStatus.Outside;
 		} else 
-			status = WorldBoundStatus.Outside;
+			status = WorldBoundStatus.Inside;
+		
 		return status;
-
 	}
 	#endregion
 
