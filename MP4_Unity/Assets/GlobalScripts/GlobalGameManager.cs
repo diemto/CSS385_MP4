@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GlobalGameManager : MonoBehaviour {
-
 	private string mCurrentLevel = "MenuLevel";  //  
 	#region support food object spawning
 	private GameObject food_item;
@@ -27,7 +26,7 @@ public class GlobalGameManager : MonoBehaviour {
 		#endregion
 
 		#region support food spawning
-		if (null == this.food_item)
+		if (this.food_item == null)
 			this.food_item = Resources.Load ("Prefabs/Food") as GameObject;
 		#endregion
 		DontDestroyOnLoad(this);

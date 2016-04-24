@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FoodBehavior : MonoBehaviour {
 
@@ -8,11 +9,55 @@ public class FoodBehavior : MonoBehaviour {
 		BadState
 	};
 
+	enum FoodImage {
+		CupCake,
+		CupCakeBad,
+		IceCream,
+		IceCreamBad,
+		ShavedIce,
+		ShavedIceBad
+	};
+
+	int current_img;
+	int current_tick = 0;
+	const int sec_til_turn_bad = 2;
+	const int sec_til_bad_destroyed = 2;
+
+	Dictionary<int, string> img_table;
+
 	FoodState current_state = FoodState.NormalState;
 
 	void Start () {
 		NewPosition ();
+		img_table = new Dictionary<int, string> ();
+		img_table.Add ((int)FoodImage.CupCake, "SharedTextures/cupcake");
+		img_table.Add ((int)FoodImage.CupCakeBad, "SharedTextures/cupcake_bad");
+		img_table.Add ((int)FoodImage.IceCream, "SharedTextures/iceCream");
+		img_table.Add ((int)FoodImage.IceCreamBad, "SharedTextures/iceCream_bad");
+		img_table.Add ((int)FoodImage.ShavedIce, "SharedTextures/shavedIce");
+		img_table.Add ((int)FoodImage.ShavedIceBad, "SharedTextures/shavedIce_bad");
+		this.current_img = (Random.Range (0, 3) * 2);
+		SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
+		if (null != renderer) {
+			Sprite s = Resources.Load (this.img_table[this.current_img], typeof(Sprite)) as Sprite;
+			renderer.sprite = s;
+		}
 	}
+
+	void swap_img() {
+		if (this.current_img % 2 == 0)
+			this.current_img++;
+		else {
+			this.current_img--;
+		}
+		SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
+		if (null != renderer) {
+			Sprite s = Resources.Load (this.img_table[this.current_img], typeof(Sprite)) as Sprite;
+			renderer.sprite = s;
+		}
+	}
+
+
 
 	// Update is called once per frame
 	void Update () {
@@ -27,7 +72,12 @@ public class FoodBehavior : MonoBehaviour {
 	}
 
 	private void ServiceNormalState() {
-		//GameObject hero = GameObject.Find ("Hero");
+		if (this.current_tick * Time.deltaTime > sec_til_turn_bad) {
+			this.swap_img ();
+			this.current_tick = 0;
+			this.current_state = FoodState.BadState;
+		}
+		++this.current_tick;
 	}
 
     private void MoveSelf()
@@ -35,6 +85,14 @@ public class FoodBehavior : MonoBehaviour {
     }
 
 	private void ServiceBadState() {
+		if (this.current_tick * Time.deltaTime > sec_til_bad_destroyed) {
+			Destroy (this.gameObject);
+//			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
+//			if (null != renderer) { 
+//				Destroy (renderer);
+//			}
+		}
+		++this.current_tick;
     }
 
 
@@ -50,6 +108,7 @@ public class FoodBehavior : MonoBehaviour {
 	{
 		if (other.gameObject.name == "Level1Hero") {
             //GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
+
             Destroy(this.gameObject);
         }
 	}
