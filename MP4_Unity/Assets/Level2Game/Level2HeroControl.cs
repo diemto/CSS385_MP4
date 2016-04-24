@@ -39,13 +39,13 @@ public class Level2HeroControl : MonoBehaviour {
 			#endregion
 		} else {
 			if (status == GlobalGameManager.WorldBoundStatus.CollideTop)
-				transform.position += new Vector3 (0f, -0.1f, 0f);
+				transform.position += new Vector3 (0f, -0.05f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideBottom)
-				transform.position += new Vector3 (0f, 0.1f, 0f);
+				transform.position += new Vector3 (0f, 0.05f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideRight)
-				transform.position += new Vector3 (-0.1f, 0f, 0f);
+				transform.position += new Vector3 (-0.05f, 0f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideLeft)
-				transform.position += new Vector3 (0.1f, 0f, 0f);
+				transform.position += new Vector3 (0.05f, 0f, 0f);
 		}
 	}
 }

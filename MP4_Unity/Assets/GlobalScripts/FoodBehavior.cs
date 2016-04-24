@@ -20,8 +20,8 @@ public class FoodBehavior : MonoBehaviour {
 
 	int current_img;
 	int current_tick = 0;
-	const int sec_til_turn_bad = 2;
-	const int sec_til_bad_destroyed = 2;
+	const int sec_til_turn_bad = 5;
+	const int sec_til_bad_destroyed = 5;
 
 	Dictionary<int, string> img_table;
 

@@ -3,8 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{FF155758-4F44-6B51-D6A4-DA4ED564A889}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -33,31 +34,32 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GlobalScripts\FoodBehavior.cs" />
-    <Compile Include="Assets\GlobalScripts\GlobalGameManager.cs" />
-    <Compile Include="Assets\GlobalScripts\HeroObject.cs" />
-    <Compile Include="Assets\Level1Game\Level1GameState.cs" />
-    <Compile Include="Assets\Level1Game\Level1HeroControl.cs" />
-    <Compile Include="Assets\Level2Game\Level2GameState.cs" />
-    <Compile Include="Assets\MenuLevelStuff\FirstGameManager.cs" />
-    <Compile Include="Assets\MenuLevelStuff\LoadSceneSupport.cs" />
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\..\..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\GlobalScripts\FoodBehavior.cs" />
+     <Compile Include="Assets\GlobalScripts\GlobalGameManager.cs" />
+     <Compile Include="Assets\GlobalScripts\HeroObject.cs" />
+     <Compile Include="Assets\Level1Game\Level1GameState.cs" />
+     <Compile Include="Assets\Level1Game\Level1HeroControl.cs" />
+     <Compile Include="Assets\Level2Game\Level2GameState.cs" />
+     <Compile Include="Assets\Level2Game\Level2HeroControl.cs" />
+     <Compile Include="Assets\MenuLevelStuff\FirstGameManager.cs" />
+     <Compile Include="Assets\MenuLevelStuff\LoadSceneSupport.cs" />
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -67,4 +69,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

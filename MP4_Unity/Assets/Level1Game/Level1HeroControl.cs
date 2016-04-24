@@ -1,4 +1,6 @@
-using UnityEngine;	
+using UnityEngine;
+using UnityEngine.SceneManagement;
+// for SceneManager
 using System.Collections;
 
 public class Level1HeroControl : MonoBehaviour {
@@ -45,19 +47,4 @@ public class Level1HeroControl : MonoBehaviour {
 				transform.position += new Vector3 (0.1f, 0f, 0f);
 		}
 	}
-
-    void OnMouseOver()
-    {
-        Debug.Log("Mouse over us!");
-    }
-
-    void OnMouseUp()
-    {
-        Debug.Log("Mouse just came up!");
-    }
-
-    void OnMouseDown()
-    {
-        Debug.Log("Mouse just went down!");
-    }
 }
