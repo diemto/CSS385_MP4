@@ -6,20 +6,54 @@ using System.Collections;
 public class Level2HeroControl : MonoBehaviour {	
 	
 	// Use this for initialization
+	#region user control references
+	private float kHeroSpeed = 15f;
+	private bool isMovingRight;
+	#endregion
+	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		// initialize projectile spawning
+		isMovingRight = true;
 	}
 
-    void OnMouseUp()
+	// Update is called once per frame
+	void Update () {
+		GlobalGameManager.WorldBoundStatus status = FirstGameManager.TheGameState.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
+		if (status == GlobalGameManager.WorldBoundStatus.Inside) {
+			#region user movement control
+			transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
+			transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
+			#endregion
+
+			#region user front direction
+			if (Input.GetAxis ("Horizontal") < 0 && isMovingRight) {
+				float xvalue = transform.localScale.x * -1;
+				transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
+				isMovingRight = false;
+			}
+			if (Input.GetAxis ("Horizontal") > 0 && !isMovingRight) {
+				float xvalue = transform.localScale.x * -1;
+				transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
+				isMovingRight = true;
+			}
+			#endregion
+		} else {
+			if (status == GlobalGameManager.WorldBoundStatus.CollideTop)
+				transform.position += new Vector3 (0f, -0.1f, 0f);
+			else if (status == GlobalGameManager.WorldBoundStatus.CollideBottom)
+				transform.position += new Vector3 (0f, 0.1f, 0f);
+			else if (status == GlobalGameManager.WorldBoundStatus.CollideRight)
+				transform.position += new Vector3 (-0.1f, 0f, 0f);
+			else if (status == GlobalGameManager.WorldBoundStatus.CollideLeft)
+				transform.position += new Vector3 (0.1f, 0f, 0f);
+		}
+	}
+
+    /*void OnMouseUp()
     {
         Debug.Log("Level 2: Lower Left clicked");
         SceneManager.LoadScene("LevelOne");
         FirstGameManager.TheGameState.SetCurrentLevel("LevelOne");
-    }
+    }*/
 	
 }

@@ -29,7 +29,7 @@ public class LoadSceneSupport : MonoBehaviour {
     #region Button service function
         private void ButtonTwoService() {
             Debug.Log("Button 2");
-            LoadScene("LevelTwo");
+            LoadScene("LevelOne");
         }
     #endregion
 

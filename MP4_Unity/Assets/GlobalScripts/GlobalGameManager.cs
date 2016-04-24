@@ -53,8 +53,8 @@ public class GlobalGameManager : MonoBehaviour {
 		if (null != mMainCamera) {
 			float maxY = mMainCamera.orthographicSize;
 			float maxX = mMainCamera.orthographicSize * mMainCamera.aspect;
-			float sizeX = 2 * maxX;
-			float sizeY = 2 * maxY;
+			float sizeX = 2 * maxX * 2;
+			float sizeY = 2 * maxY * 2;
 			float sizeZ = Mathf.Abs(mMainCamera.farClipPlane - mMainCamera.nearClipPlane);
 
 			// Make sure z-component is always zero
@@ -89,7 +89,7 @@ public class GlobalGameManager : MonoBehaviour {
 			else if ( (objBound.min.z < mWorldBound.min.z) || (objBound.max.z > mWorldBound.max.z))
 				status = WorldBoundStatus.Outside;
 		} else 
-			status = WorldBoundStatus.Inside;
+			status = WorldBoundStatus.Outside;
 		
 		return status;
 	}
