@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Level1GameState : MonoBehaviour {
 
-    const float SEC_TO_SPAWN_FOOD = 3f;
+    const float SEC_TO_SPAWN_FOOD = 1f;
     int game_ticks_since_spawn = 0;
     Text score;
 	// Use this for initialization
