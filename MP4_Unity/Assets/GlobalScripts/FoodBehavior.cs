@@ -114,10 +114,9 @@ public class FoodBehavior : MonoBehaviour
     {
         if (other.gameObject.name == "Hero")
         {
-
             Destroy(this.gameObject);
+            if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
+            else FirstGameManager.TheGameState.MinusScore();
         }
-        if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
-        else FirstGameManager.TheGameState.MinusScore();
     }
 }

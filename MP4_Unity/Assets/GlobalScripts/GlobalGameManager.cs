@@ -32,11 +32,8 @@ public class GlobalGameManager : MonoBehaviour {
 		DontDestroyOnLoad(this);
 	}
 
-    public void CreateNewFoodItem() {
-		GameObject e = Instantiate(this.food_item) as GameObject;
-		Debug.Log("Create a new Food");
-	}
 
+    #region score support
     public void AddScore()
     {
         ++this.score;
@@ -52,9 +49,19 @@ public class GlobalGameManager : MonoBehaviour {
         return this.score;
     }
 
+    public void SetScore(int score)
+    {
+        this.score = score;
+    }
+    #endregion
 
-	#region support world bound support
-	public enum WorldBoundStatus {
+    public void CreateNewFoodItem()
+    {
+        GameObject e = Instantiate(this.food_item) as GameObject;
+    }
+
+    #region support world bound support
+    public enum WorldBoundStatus {
 		CollideTop,
 		CollideLeft,
 		CollideRight,

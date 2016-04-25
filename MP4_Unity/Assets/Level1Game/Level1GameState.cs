@@ -17,10 +17,10 @@ public class Level1GameState : MonoBehaviour {
 		for(int i = 0; i < 5; i++){
 			FirstGameManager.TheGameState.CreateNewFoodItem ();
 		}
-	}
+    }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         this.score.text = FirstGameManager.TheGameState.GetScore().ToString();
 
         if (++game_ticks_since_spawn * Time.deltaTime > SEC_TO_SPAWN_FOOD)
