@@ -20,8 +20,8 @@ public class FoodBehavior : MonoBehaviour {
 
 	int current_img;
 	int current_tick = 0;
-	const int sec_til_turn_bad = 2;
-	const int sec_til_bad_destroyed = 2;
+	const int sec_til_turn_bad = 5;
+	const int sec_til_bad_destroyed = 5;
 
 	Dictionary<int, string> img_table;
 
@@ -80,16 +80,12 @@ public class FoodBehavior : MonoBehaviour {
 		++this.current_tick;
 	}
 
-    private void MoveSelf()
-    {
-    }
-
 	private void ServiceBadState() {
 		if (this.current_tick * Time.deltaTime > sec_til_bad_destroyed) {
 			Destroy (this.gameObject);
 		}
 		++this.current_tick;
-    }
+    	}
 
 
 	private void NewPosition() {
@@ -102,10 +98,10 @@ public class FoodBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "Level1Hero") {
-            Destroy(this.gameObject);
-        }
-        if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
-        else FirstGameManager.TheGameState.MinusScore();
+		if (other.gameObject.name == "Hero") {
+
+            		Destroy(this.gameObject);
+        	}
+        	if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
+        	else FirstGameManager.TheGameState.MinusScore();
 	}
-}

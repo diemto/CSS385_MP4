@@ -1,18 +1,15 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-    // for SceneManager
+﻿using UnityEngine;	
 using System.Collections;
 
-public class Level2HeroControl : MonoBehaviour {	
-	
-	// Use this for initialization
+public class HeroObject : MonoBehaviour {
+
 	#region user control references
-	private float kHeroSpeed = 15f;
+	private float speed;
 	private bool isMovingRight;
 	#endregion
 	// Use this for initialization
-	void Start () {
-		// initialize projectile spawning
+	public HeroObject () {
+		speed = 15f;
 		isMovingRight = true;
 	}
 
@@ -21,8 +18,8 @@ public class Level2HeroControl : MonoBehaviour {
 		GlobalGameManager.WorldBoundStatus status = FirstGameManager.TheGameState.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
 		if (status == GlobalGameManager.WorldBoundStatus.Inside) {
 			#region user movement control
-			transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
-			transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
+			transform.position += Input.GetAxis ("Vertical")  * transform.up * (speed * Time.smoothDeltaTime);
+			transform.position += Input.GetAxis ("Horizontal")  * transform.right * (speed * Time.smoothDeltaTime);
 			#endregion
 
 			#region user front direction
@@ -39,13 +36,28 @@ public class Level2HeroControl : MonoBehaviour {
 			#endregion
 		} else {
 			if (status == GlobalGameManager.WorldBoundStatus.CollideTop)
-				transform.position += new Vector3 (0f, -0.05f, 0f);
+				transform.position += new Vector3 (0f, -0.1f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideBottom)
-				transform.position += new Vector3 (0f, 0.05f, 0f);
+				transform.position += new Vector3 (0f, 0.1f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideRight)
-				transform.position += new Vector3 (-0.05f, 0f, 0f);
+				transform.position += new Vector3 (-0.1f, 0f, 0f);
 			else if (status == GlobalGameManager.WorldBoundStatus.CollideLeft)
-				transform.position += new Vector3 (0.05f, 0f, 0f);
+				transform.position += new Vector3 (0.1f, 0f, 0f);
 		}
+	}
+
+	void OnMouseOver()
+	{
+		Debug.Log("Mouse over us!");
+	}
+
+	void OnMouseUp()
+	{
+		Debug.Log("Mouse just came up!");
+	}
+
+	void OnMouseDown()
+	{
+		Debug.Log("Mouse just went down!");
 	}
 }

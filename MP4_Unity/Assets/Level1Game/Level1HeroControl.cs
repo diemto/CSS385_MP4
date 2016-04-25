@@ -1,10 +1,12 @@
-using UnityEngine;	
+using UnityEngine;
+using UnityEngine.SceneManagement;
+// for SceneManager
 using System.Collections;
 
 public class Level1HeroControl : MonoBehaviour {
 
 	#region user control references
-	private float kHeroSpeed = 20f;
+	private float kHeroSpeed = 15f;
 	private bool isMovingRight;
 	#endregion
 	// Use this for initialization
@@ -42,19 +44,4 @@ public class Level1HeroControl : MonoBehaviour {
 		if (this.transform.position.x < FirstGameManager.TheGameState.WorldMin.x)
 			transform.position = new Vector3 (FirstGameManager.TheGameState.WorldMin.x, transform.position.y, 0f);
 	}
-
-    void OnMouseOver()
-    {
-        Debug.Log("Mouse over us!");
-    }
-
-    void OnMouseUp()
-    {
-        Debug.Log("Mouse just came up!");
-    }
-
-    void OnMouseDown()
-    {
-        Debug.Log("Mouse just went down!");
-    }
 }
