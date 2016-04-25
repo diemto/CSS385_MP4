@@ -7,23 +7,26 @@ public class LoadSceneSupport : MonoBehaviour {
 
 	public string LevelName = null;
 
-    public Button mLevelOneButton;
-    public Button mLevelTwoButton;
+    public Button mStart;
+    public Button mExit;
 
 	// Use this for initialization
 	void Start () {
         // Workflow assume:
         //      mLevelOneButton: is dragged/placed from UI
-        mLevelTwoButton = GameObject.Find("Start").GetComponent<Button>();
+        mStart = GameObject.Find("Start").GetComponent<Button>();
+        mExit = GameObject.Find("Exit").GetComponent<Button>();
 
         // add in listener
-        mLevelOneButton.onClick.AddListener(
+        mStart.onClick.AddListener(
                 () => {                     // Lamda operator: define an annoymous function
                     Debug.Log("Button 1");
                     LoadScene("LevelOne");
-                });  
-
-        mLevelTwoButton.onClick.AddListener(ButtonTwoService);
+                });
+        mExit.onClick.AddListener(
+                () => {                     // Lamda operator: define an annoymous function
+                    Application.Quit();
+                });
 	}
 
     #region Button service function

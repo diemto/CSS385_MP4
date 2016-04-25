@@ -87,10 +87,6 @@ public class FoodBehavior : MonoBehaviour {
 	private void ServiceBadState() {
 		if (this.current_tick * Time.deltaTime > sec_til_bad_destroyed) {
 			Destroy (this.gameObject);
-//			SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
-//			if (null != renderer) { 
-//				Destroy (renderer);
-//			}
 		}
 		++this.current_tick;
     }
@@ -107,9 +103,9 @@ public class FoodBehavior : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.name == "Level1Hero") {
-            //GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
-
             Destroy(this.gameObject);
         }
+        if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
+        else FirstGameManager.TheGameState.MinusScore();
 	}
 }

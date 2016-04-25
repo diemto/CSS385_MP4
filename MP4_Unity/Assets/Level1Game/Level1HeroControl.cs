@@ -15,55 +15,32 @@ public class Level1HeroControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GlobalGameManager.WorldBoundStatus status = FirstGameManager.TheGameState.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
-		if (status == GlobalGameManager.WorldBoundStatus.Inside) {
-			#region user movement control
-			transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
-			transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
-			#endregion
-
-			#region user front direction
-			if (Input.GetAxis ("Horizontal") < 0 && isMovingRight) {
-				float xvalue = transform.localScale.x * -1;
-				transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
-				isMovingRight = false;
-			}
-			if (Input.GetAxis ("Horizontal") > 0 && !isMovingRight) {
-				float xvalue = transform.localScale.x * -1;
-				transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
-				isMovingRight = true;
-			}
-			#endregion
-		} else {
-				if (status == GlobalGameManager.WorldBoundStatus.CollideTop)
-				transform.position += new Vector3 (0f, -0.005f, 0f);
-				else if (status == GlobalGameManager.WorldBoundStatus.CollideBottom)
-				transform.position += new Vector3 (0f, 0.005f, 0f);
-				else if (status == GlobalGameManager.WorldBoundStatus.CollideRight)
-				transform.position += new Vector3 (-0.005f, 0f, 0f);
-				else if (status == GlobalGameManager.WorldBoundStatus.CollideLeft)
-				transform.position += new Vector3 (0.005f, 0f, 0f);
-		}
-
-
-		/*
 		#region user movement control
 		transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
 		transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
+		#endregion
 
-		if(Input.GetAxis("Horizontal") < 0 && isMovingRight) {
-			float newX = transform.localScale.x * -1;
-			transform.localScale = new Vector3(newX, transform.localScale.y, transform.localScale.z);
+		#region user front direction
+		if (Input.GetAxis ("Horizontal") < 0 && isMovingRight) {
+			float xvalue = transform.localScale.x * -1;
+			transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
 			isMovingRight = false;
 		}
-
-		if(Input.GetAxis("Horizontal") > 0 && !isMovingRight) {
-			float newX = transform.localScale.x * -1;
-			transform.localScale = new Vector3(newX, transform.localScale.y, transform.localScale.z);
+		if (Input.GetAxis ("Horizontal") > 0 && !isMovingRight) {
+			float xvalue = transform.localScale.x * -1;
+			transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
 			isMovingRight = true;
 		}
 		#endregion
-		*/
+        // todo find out how to get the width of the object and subtract it from the position
+		if (this.transform.position.y > FirstGameManager.TheGameState.WorldMax.y)
+			transform.position = new Vector3 (transform.position.x, FirstGameManager.TheGameState.WorldMax.y, 0f);
+		if (this.transform.position.y < FirstGameManager.TheGameState.WorldMin.y)
+			transform.position = new Vector3 (transform.position.x, FirstGameManager.TheGameState.WorldMin.y, 0f);
+		if (this.transform.position.x > FirstGameManager.TheGameState.WorldMax.x)
+			transform.position = new Vector3 (FirstGameManager.TheGameState.WorldMax.x, transform.position.y, 0f);
+		if (this.transform.position.x < FirstGameManager.TheGameState.WorldMin.x)
+			transform.position = new Vector3 (FirstGameManager.TheGameState.WorldMin.x, transform.position.y, 0f);
 	}
 
     void OnMouseOver()

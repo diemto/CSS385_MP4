@@ -7,6 +7,7 @@ public class GlobalGameManager : MonoBehaviour {
 	private string mCurrentLevel = "MenuLevel";  //  
 	#region support food object spawning
 	private GameObject food_item;
+    private int score = 0;
 	#endregion
 
 	#region World Bound support
@@ -20,8 +21,7 @@ public class GlobalGameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		#region world bound support
-		mMainCamera = Camera.main;
-		mWorldBound = new Bounds(Vector3.zero, Vector3.one);
+
 		UpdateWorldWindowBound();
 		#endregion
 
@@ -32,10 +32,26 @@ public class GlobalGameManager : MonoBehaviour {
 		DontDestroyOnLoad(this);
 	}
 
-	public void CreateNewFoodItem() {
+    public void CreateNewFoodItem() {
 		GameObject e = Instantiate(this.food_item) as GameObject;
-		Debug.Log("Create a new Food: " + mCurrentLevel);
+		Debug.Log("Create a new Food");
 	}
+
+    public void AddScore()
+    {
+        ++this.score;
+    }
+
+    public void MinusScore()
+    {
+        --this.score;
+    }
+
+    public int GetScore()
+    {
+        return this.score;
+    }
+
 
 	#region support world bound support
 	public enum WorldBoundStatus {
@@ -49,24 +65,25 @@ public class GlobalGameManager : MonoBehaviour {
 
 	public void UpdateWorldWindowBound()
 	{
-		// get the main 
-		if (null != mMainCamera) {
-			float maxY = mMainCamera.orthographicSize;
-			float maxX = mMainCamera.orthographicSize * mMainCamera.aspect;
-			float sizeX = 2 * maxX;
-			float sizeY = 2 * maxY;
-			float sizeZ = Mathf.Abs(mMainCamera.farClipPlane - mMainCamera.nearClipPlane);
+        // get the main 
+        mMainCamera = Camera.main;
+        mWorldBound = new Bounds(Vector3.zero, Vector3.one);
+        float maxY = mMainCamera.orthographicSize;
+		float maxX = mMainCamera.orthographicSize * mMainCamera.aspect;
+		float sizeX = 2 * maxX;
+		float sizeY = 2 * maxY;
+		float sizeZ = Mathf.Abs(mMainCamera.farClipPlane - mMainCamera.nearClipPlane);
 
-			// Make sure z-component is always zero
-			Vector3 c = mMainCamera.transform.position;
-			c.z = 0.0f;
-			mWorldBound.center = c;
-			mWorldBound.size = new Vector3(sizeX, sizeY, sizeZ);
+		// Make sure z-component is always zero
+		Vector3 c = mMainCamera.transform.position;
+		c.z = 0.0f;
+		mWorldBound.center = c;
+		mWorldBound.size = new Vector3(sizeX, sizeY, sizeZ);
 
-			mWorldCenter = new Vector2(c.x, c.y);
-			mWorldMin = new Vector2(mWorldBound.min.x, mWorldBound.min.y);
-			mWorldMax = new Vector2(mWorldBound.max.x, mWorldBound.max.y);
-		}
+		mWorldCenter = new Vector2(c.x, c.y);
+		mWorldMin = new Vector2(mWorldBound.min.x, mWorldBound.min.y);
+		mWorldMax = new Vector2(mWorldBound.max.x, mWorldBound.max.y);
+
 	}
 
 	public Vector2 WorldCenter { get { return mWorldCenter; } }
