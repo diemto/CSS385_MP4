@@ -71,8 +71,10 @@
   <ItemGroup>
     <Compile Include="Assets\GlobalScripts\FoodBehavior.cs" />
     <Compile Include="Assets\GlobalScripts\GlobalGameManager.cs" />
+    <Compile Include="Assets\GlobalScripts\HeroObject.cs" />
     <Compile Include="Assets\Level1Game\Level1GameState.cs" />
     <Compile Include="Assets\Level1Game\Level1HeroControl.cs" />
+    <Compile Include="Assets\Level2Game\Level2GameState.cs" />
     <Compile Include="Assets\Level2Game\Level2HeroControl.cs" />
     <Compile Include="Assets\MenuLevelStuff\FirstGameManager.cs" />
     <Compile Include="Assets\MenuLevelStuff\LoadSceneSupport.cs" />

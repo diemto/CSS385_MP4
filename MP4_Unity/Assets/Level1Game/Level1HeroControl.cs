@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Level1HeroControl : MonoBehaviour {
-
 	#region user control references
 	private float kHeroSpeed = 15f;
 	private bool isMovingRight;
@@ -20,10 +19,20 @@ public class Level1HeroControl : MonoBehaviour {
 		#region user movement control
 		transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
 		transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
-		#endregion
+        #endregion
 
-		#region user front direction
-		if (Input.GetAxis ("Horizontal") < 0 && isMovingRight) {
+        //Keep the Hero within the world bound
+        Vector2 worldMin = FirstGameManager.TheGameState.WorldMin;
+        Vector2 worldMax = FirstGameManager.TheGameState.WorldMax;
+        float deltaY = 1f;
+        float deltaX = 1.5f;
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, worldMin.x + deltaX, worldMax.x - deltaX),
+                                        Mathf.Clamp(transform.position.y, worldMin.y + deltaY, worldMax.y - deltaY),
+                                        transform.position.z);
+
+
+        #region user front direction
+        if (Input.GetAxis ("Horizontal") < 0 && isMovingRight) {
 			float xvalue = transform.localScale.x * -1;
 			transform.localScale = new Vector3 (xvalue, transform.localScale.y, transform.localScale.z);
 			isMovingRight = false;

@@ -105,8 +105,9 @@ public class FoodBehavior : MonoBehaviour
     {
         Vector2 worldMin = FirstGameManager.TheGameState.WorldMin;
         Vector2 worldMax = FirstGameManager.TheGameState.WorldMax;
-        float x_pos = Random.Range(worldMin.x, worldMax.x);
-        float y_pos = Random.Range(worldMin.y, worldMax.y);
+        float delta = 1.5f;
+        float x_pos = Random.Range(worldMin.x + delta, worldMax.x - delta);
+        float y_pos = Random.Range(worldMin.y + delta, worldMax.y - delta);
         transform.position = new Vector3(x_pos, y_pos, 0f);
     }
 
