@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Level1HeroControl : MonoBehaviour {
 	#region user control references
-	private float kHeroSpeed = 15f;
+	private float kHeroSpeed = 10f;
 	private bool isMovingRight;
 	#endregion
 	// Use this for initialization
