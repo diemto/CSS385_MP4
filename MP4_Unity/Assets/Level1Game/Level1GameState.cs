@@ -21,7 +21,7 @@ public class Level1GameState : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        this.score.text = FirstGameManager.TheGameState.GetScore().ToString();
+        this.score.text = "Devoured: " + FirstGameManager.TheGameState.GetScore().ToString();
 
         if (++game_ticks_since_spawn * Time.deltaTime > SEC_TO_SPAWN_FOOD)
         {
@@ -35,7 +35,7 @@ public class Level1GameState : MonoBehaviour {
 			FirstGameManager.TheGameState.PrintCurrentLevel ();
 		}
 
-		if (Input.GetKey (KeyCode.T)) {
+		if (FirstGameManager.TheGameState.GetScore() >= 5) {
 			SceneManager.LoadScene ("LevelTwo");    // this must be call from an object in this level!
 			FirstGameManager.TheGameState.SetCurrentLevel ("LevelTwo");
 			FirstGameManager.TheGameState.PrintCurrentLevel ();

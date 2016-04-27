@@ -42,6 +42,8 @@ public class FirstGameManager : MonoBehaviour {
 			CreateGlobalManager();
             Debug.Log("Creating Global Manager!");
 		}
+
+		DontDestroyOnLoad(this.gameObject);
 	}
 
 	// from this point on, ALL objects from all levels should be able to access

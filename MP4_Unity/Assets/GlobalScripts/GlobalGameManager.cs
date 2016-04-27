@@ -30,6 +30,7 @@ public class GlobalGameManager : MonoBehaviour {
 			this.food_item = Resources.Load ("Prefabs/Food") as GameObject;
 		#endregion
 		DontDestroyOnLoad(this);
+
 	}
 
 
