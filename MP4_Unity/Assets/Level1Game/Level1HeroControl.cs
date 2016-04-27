@@ -16,6 +16,8 @@ public class Level1HeroControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (transform.localScale.ToString());
+
 		#region user movement control
 		transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
 		transform.position += Input.GetAxis ("Horizontal")  * transform.right * (kHeroSpeed * Time.smoothDeltaTime);
@@ -24,8 +26,10 @@ public class Level1HeroControl : MonoBehaviour {
         //Keep the Hero within the world bound
         Vector2 worldMin = FirstGameManager.TheGameState.WorldMin;
         Vector2 worldMax = FirstGameManager.TheGameState.WorldMax;
-        float deltaY = 1f;
-        float deltaX = 1.5f;
+
+		Vector3 size = GetComponent<Renderer> ().bounds.size;
+		float deltaY = size.y/2f;
+		float deltaX = size.x/2f;
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, worldMin.x + deltaX, worldMax.x - deltaX),
                                         Mathf.Clamp(transform.position.y, worldMin.y + deltaY, worldMax.y - deltaY),
                                         transform.position.z);
@@ -43,14 +47,5 @@ public class Level1HeroControl : MonoBehaviour {
 			isMovingRight = true;
 		}
 		#endregion
-        // todo find out how to get the width of the object and subtract it from the position
-		if (this.transform.position.y > FirstGameManager.TheGameState.WorldMax.y)
-			transform.position = new Vector3 (transform.position.x, FirstGameManager.TheGameState.WorldMax.y, 0f);
-		if (this.transform.position.y < FirstGameManager.TheGameState.WorldMin.y)
-			transform.position = new Vector3 (transform.position.x, FirstGameManager.TheGameState.WorldMin.y, 0f);
-		if (this.transform.position.x > FirstGameManager.TheGameState.WorldMax.x)
-			transform.position = new Vector3 (FirstGameManager.TheGameState.WorldMax.x, transform.position.y, 0f);
-		if (this.transform.position.x < FirstGameManager.TheGameState.WorldMin.x)
-			transform.position = new Vector3 (FirstGameManager.TheGameState.WorldMin.x, transform.position.y, 0f);
 	}
 }
