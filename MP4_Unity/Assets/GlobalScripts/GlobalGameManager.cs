@@ -10,6 +10,8 @@ public class GlobalGameManager : MonoBehaviour {
     private int score = 0;
 	#endregion
 
+	private AudioSource audioSource;
+
 	#region World Bound support
 	private Bounds mWorldBound;  // this is the world bound
 	private Vector2 mWorldMin;	// Better support 2D interactions
@@ -21,6 +23,11 @@ public class GlobalGameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		#region world bound support
+
+		audioSource = gameObject.AddComponent<AudioSource>();
+		audioSource.clip = Resources.Load("Audio/level1") as AudioClip;
+		audioSource.volume = 0.7f;
+		audioSource.Play();
 
 		UpdateWorldWindowBound();
 		#endregion

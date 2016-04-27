@@ -30,6 +30,8 @@ public class FoodBehavior : MonoBehaviour
 
     FoodState current_state = FoodState.NormalState;
 
+	public AudioSource audioEffect = null;
+
     void Start()
     {
         NewPosition();
@@ -47,6 +49,7 @@ public class FoodBehavior : MonoBehaviour
             Sprite s = Resources.Load(this.img_table[this.current_img], typeof(Sprite)) as Sprite;
             renderer.sprite = s;
         }
+		audioEffect = GetComponent<AudioSource>();
     }
 
     void swap_img()
@@ -118,6 +121,7 @@ public class FoodBehavior : MonoBehaviour
             Destroy(this.gameObject);
             if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
             else FirstGameManager.TheGameState.MinusScore();
+			audioEffect.Play();
         }
     }
 }

@@ -18,6 +18,7 @@ public class FirstGameManager : MonoBehaviour {
 		newGameState.name = "GlobalStateManager";
 		newGameState.AddComponent<GlobalGameManager>();
 		sTheGameState = newGameState.GetComponent<GlobalGameManager>();
+		DontDestroyOnLoad (sTheGameState.gameObject);
 	}
 
 	public static GlobalGameManager TheGameState
@@ -42,8 +43,7 @@ public class FirstGameManager : MonoBehaviour {
 			CreateGlobalManager();
             Debug.Log("Creating Global Manager!");
 		}
-
-		DontDestroyOnLoad(this.gameObject);
+			
 	}
 
 	// from this point on, ALL objects from all levels should be able to access
