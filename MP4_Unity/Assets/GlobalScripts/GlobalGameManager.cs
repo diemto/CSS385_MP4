@@ -26,7 +26,8 @@ public class GlobalGameManager : MonoBehaviour {
 
 		audioSource = gameObject.AddComponent<AudioSource>();
 		audioSource.clip = Resources.Load("Audio/level1") as AudioClip;
-		audioSource.volume = 0.7f;
+		audioSource.loop = true;
+		audioSource.volume = 0.5f;
 		audioSource.Play();
 
 		UpdateWorldWindowBound();
