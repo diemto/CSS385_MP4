@@ -11,7 +11,8 @@ public class Level2GameState : MonoBehaviour {
 	Text score;
 	// Use this for initialization
 	void Start () {
-		score = GameObject.Find("Score").GetComponent<Text>();
+        Time.timeScale = 1; // Resume the game scene
+        score = GameObject.Find("Score").GetComponent<Text>();
 		FirstGameManager.TheGameState.UpdateWorldWindowBound();
 		Debug.Log("Level2: Wakes up!!");
 		for(int i = 0; i < 5; i++){

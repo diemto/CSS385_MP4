@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 
 public class Level1GameState : MonoBehaviour {
-
+    public GameObject gameWinPanel;
+    private Button continueBtn;
     const float SEC_TO_SPAWN_FOOD = 1f;
     int game_ticks_since_spawn = 0;
     Text score;
@@ -17,6 +18,7 @@ public class Level1GameState : MonoBehaviour {
 		for(int i = 0; i < 5; i++){
 			FirstGameManager.TheGameState.CreateNewFoodItem ();
 		}
+        continueBtn = GameObject.Find("Continue").GetComponent<Button>(); // Search for the Continue button object
     }
 
     // Update is called once per frame
@@ -36,9 +38,19 @@ public class Level1GameState : MonoBehaviour {
 		}
 
 		if (FirstGameManager.TheGameState.GetScore() >= 5) {
-			SceneManager.LoadScene ("LevelTwo");    // this must be call from an object in this level!
-			FirstGameManager.TheGameState.SetCurrentLevel ("LevelTwo");
-			FirstGameManager.TheGameState.PrintCurrentLevel ();
-		}
+
+            gameWinPanel.SetActive(true);   // Activate the Game Win Panel
+            Time.timeScale = 0;     // Pause the scene
+        }
 	}
+
+    // This method is for attach to the continue onClick() of the button to load the next scene
+    // A GameObject with this script attached to it is required. In this case, "ForContinueBtn" in Level1Scene
+    public void LoadNextLevel()
+    {
+        gameWinPanel.SetActive(false);  // Turn off the Game win panel
+        SceneManager.LoadScene("LevelTwo");    // this must be call from an object in this level!
+        FirstGameManager.TheGameState.SetCurrentLevel("LevelTwo");
+        FirstGameManager.TheGameState.PrintCurrentLevel();
+    }
 }

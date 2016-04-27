@@ -119,7 +119,7 @@ public class FoodBehavior : MonoBehaviour
     {
         if (other.gameObject.name == "Hero")
         {
-			audioEffect.PlayOneShot (audioEffect.clip,1f);
+            audioEffect.PlayOneShot (audioEffect.clip,1f);
 
             Destroy(this.gameObject);
             if (this.current_state == FoodState.NormalState) FirstGameManager.TheGameState.AddScore();
