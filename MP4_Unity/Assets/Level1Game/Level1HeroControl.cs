@@ -7,19 +7,15 @@ public class Level1HeroControl : MonoBehaviour {
 	#region user control references
 	private float kHeroSpeed = 10f;
 	private bool isMovingRight;
-    #endregion
-    // Use this for initialization
-    AudioSource audioEffect = null;
-
-    void Start () {
+	#endregion
+	// Use this for initialization
+	void Start () {
 		// initialize projectile spawning
 		isMovingRight = true;
-        this.audioEffect = GetComponent<AudioSource>();
-
-    }
-
-    // Update is called once per frame
-    void Update () {
+	}
+	
+	// Update is called once per frame
+	void Update () {
 
 		#region user movement control
 		transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);

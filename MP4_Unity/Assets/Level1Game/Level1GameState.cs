@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Level1GameState : MonoBehaviour {
     public GameObject gameWinPanel;
-    private Button continueBtn;
     const float SEC_TO_SPAWN_FOOD = 1f;
     int game_ticks_since_spawn = 0;
     Text score;
@@ -18,7 +17,6 @@ public class Level1GameState : MonoBehaviour {
 		for(int i = 0; i < 5; i++){
 			FirstGameManager.TheGameState.CreateNewFoodItem ();
 		}
-        continueBtn = GameObject.Find("ForContinueBtn").GetComponent<Button>(); // Search for the Continue button object
     }
 
     // Update is called once per frame
@@ -38,7 +36,6 @@ public class Level1GameState : MonoBehaviour {
 		}
 
 		if (FirstGameManager.TheGameState.GetScore() >= 5) {
-
             gameWinPanel.SetActive(true);   // Activate the Game Win Panel
             Time.timeScale = 0;     // Pause the scene
         }

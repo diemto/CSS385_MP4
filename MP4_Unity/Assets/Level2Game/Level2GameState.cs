@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 
 public class Level2GameState : MonoBehaviour {
-
+    public GameObject WiningPanel = null;
+    public Button mExit = null;
+    public Button replay = null;
 	const float SEC_TO_SPAWN_FOOD = 1f;
 	int game_ticks_since_spawn = 0;
 	Text score;
@@ -18,7 +20,21 @@ public class Level2GameState : MonoBehaviour {
 		for(int i = 0; i < 5; i++){
 			FirstGameManager.TheGameState.CreateNewFoodItem ();
 		}
-	}
+        mExit.onClick.AddListener(
+                () => {                     // Lamda operator: define an annoymous function
+                    Debug.Log("mExit button clicked");
+                    WiningPanel.SetActive(false);
+                    Application.Quit();
+                });
+        replay.onClick.AddListener(
+                () => {                     // Lamda operator: define an annoymous function
+                    Debug.Log("loadLevel button clicked");
+                    WiningPanel.SetActive(false);
+                    FirstGameManager.TheGameState.SetScore(0);
+                    Time.timeScale = 1; // turn on timescale back to on
+                    SceneManager.LoadScene("LevelOne");
+                });
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -37,7 +53,11 @@ public class Level2GameState : MonoBehaviour {
 		}
 
 		if (FirstGameManager.TheGameState.GetScore() >= 20) {
-			// Show winning screen
+            // Show winning screen
+            WiningPanel.SetActive(true);    // Activate the winning panel
+            Time.timeScale = 0;             // Pause the scene (turn time scale off)
 		}
-	}
+
+        
+    }
 }
