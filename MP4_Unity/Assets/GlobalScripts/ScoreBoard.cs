@@ -43,6 +43,8 @@ public class ScoreBoard : MonoBehaviour {
 
 	private void update_score() {
 		int score = FirstGameManager.TheGameState.GetScore ();
+		if (score >= SIZE_OF_SCORE)
+			return;
 		for (int i = 0; i < score; i++) {
 			this.first_line [i].GetComponent<Renderer> ().enabled = true;
 		}
