@@ -18,7 +18,7 @@ public class Level1GameState : MonoBehaviour {
 		for(int i = 0; i < 5; i++){
 			FirstGameManager.TheGameState.CreateNewFoodItem ();
 		}
-        continueBtn = GameObject.Find("Continue").GetComponent<Button>(); // Search for the Continue button object
+        continueBtn = GameObject.Find("ForContinueBtn").GetComponent<Button>(); // Search for the Continue button object
     }
 
     // Update is called once per frame
