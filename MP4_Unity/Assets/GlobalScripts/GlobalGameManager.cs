@@ -50,7 +50,7 @@ public class GlobalGameManager : MonoBehaviour {
 
     public void MinusScore()
     {
-        --this.score;
+		if (this.score > 0) --this.score;
     }
 
     public int GetScore()

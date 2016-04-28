@@ -16,7 +16,6 @@ public class Level1HeroControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (transform.localScale.ToString());
 
 		#region user movement control
 		transform.position += Input.GetAxis ("Vertical")  * transform.up * (kHeroSpeed * Time.smoothDeltaTime);
